@@ -29,15 +29,16 @@ const HotspotQuery = {
       const skip = (page - 1) * limit;
 
       const items = await Hotspot.find({}).limit(limit).skip(skip);
-      return {
-        items,
-        pageInfo: {
-          currentPage: page,
-          totalPages,
-          limit,
-          totalCount,
-        },
-      };
+      return items
+      //  {
+      //   items,
+      //   pageInfo: {
+      //     currentPage: page,
+      //     totalPages,
+      //     limit,
+      //     totalCount,
+      //   },
+      // };
     }
   ),
 };

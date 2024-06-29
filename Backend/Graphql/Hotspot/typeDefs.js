@@ -22,7 +22,7 @@ const Hotspotqueries = `
     getHotspot(id: ID!): Hotspot
     getMyPostedHotspot: [Hotspot]
     getHotspotsPostedMyUser(assigned_collector: ID!): Hotspot
-    getPostedHotspotForAdmin(limit: Int ,page:Int ): Hotspot
+    getPostedHotspotForAdmin(limit: Int ,page:Int ): [Hotspot]
    `;
 
 const Hotspotmutations = `
