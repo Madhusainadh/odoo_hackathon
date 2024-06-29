@@ -19,6 +19,7 @@
     "apollo-server-express": "^3.12.0",
     "aws-sdk": "^2.1353.0",
     "axios": "^1.5.1",
+    "bcrypt": "^5.1.1",
     "better-queue": "^3.8.12",
     "body-parser": "^1.20.2",
     "btoa": "^1.2.1",

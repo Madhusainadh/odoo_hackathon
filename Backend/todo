@@ -15,5 +15,5 @@
 6 : Tracking of cleanup Tasks in realtime : -- garbage collectors can see there assigned hotspots can able to update there status.  status: - Visited , Sheduled to clean  , cleaning ,completed.
 
 
-7:  Notifi  
+7:  Notifi
 

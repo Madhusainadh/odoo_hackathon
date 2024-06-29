@@ -2,15 +2,8 @@ const mongoose = require("mongoose");
 
 const UsersSchema = new mongoose.Schema(
   {
-    Unique_Id: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    accType: {
-      type: String,
-      required: true,
-    },
+
+ 
     FullName: {
       type: String,
       required: false,
@@ -41,6 +34,6 @@ const UsersSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Users = mongoose.model("CsUser", UsersSchema);
+const Users = mongoose.model("UserCollection", UsersSchema);
 
 module.exports = Users;

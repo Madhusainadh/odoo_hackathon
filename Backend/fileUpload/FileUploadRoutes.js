@@ -1,20 +1,7 @@
 const { Router } = require("express");
 const fileUpload = Router();
-const multer = require("multer");
-const { s3Uploadv2, s3Uploadv3 } = require("./seService");
-const { S3Client, DeleteObjectCommand } = require("@aws-sdk/client-s3");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
-const { decryptCookie } = require("../Common/GenerateUniqueID.js");
-const storage = multer.memoryStorage();
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 100000000, files: 4 },
-});
-const s3client = new S3Client();
-const CsUser = require("../Graphql/User/Schema.js");
-const Account = require("../Graphql/AddAccountData/schema.js");
-const AccountBalance = require("../Graphql/AccountBalance/schema.js");
 const { default: mongoose } = require("mongoose");
 
 async function authMiddleware(req, res, next) {

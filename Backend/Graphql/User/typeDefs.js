@@ -1,11 +1,11 @@
 const UserTypes = `
-type CsUser {
+type User {
   id: ID!
   Unique_Id: String!
   accType: String!
   FullName: String
   Role: String!
-  mobileNumber: Int!
+  mobileNumber: BigInt!
   email: String
   password: String
   Is_Active: Boolean!
@@ -18,7 +18,7 @@ input CreateUserInput {
   accType: String!
   FullName: String
   Role: String
-  mobileNumber: Int!
+  mobileNumber: BigInt!
   email: String
   password: String
   Is_Active: Boolean
@@ -29,22 +29,23 @@ input UpdateUserInput {
   accType: String
   FullName: String
   Role: String
-  mobileNumber: Int
+  mobileNumber: BigInt
   email: String
   password: String
   Is_Active: Boolean
 }
-
 `;
+
 const Userqueries = `
-  getUser(uniqueId: String!): CsUser
-  listUsers: [CsUser]
+  getUser(uniqueId: String!): User
+  listUsers: [User]
    `;
 
 const Usermutations = `
-   createUser(input: CreateUserInput!): CsUser
-  updateUser(uniqueId: String!, input: UpdateUserInput!): CsUser
-  deactivateUser(uniqueId: String!): CsUser
-
+    createUser(input: CreateUserInput!): User
+    updateUser(uniqueId: ID!, input: UpdateUserInput!): User
+    deactivateUser(uniqueId: ID!): User
+    login(mobileNumber: String!, password: String!): User
   `;
+
 module.exports = { Usermutations, Userqueries, UserTypes };

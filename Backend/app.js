@@ -15,9 +15,12 @@ const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const { typeDefs } = require("./Graphql/typeDefs");
 const { resolvers } = require("./Graphql/resolvers");
+const {
+  ApolloServerPluginDrainHttpServer,
+} = require("@apollo/server/plugin/drainHttpServer");
+require("dotenv").config();
 
 const redisClient = new Redis();
-
 
 async function startServer() {
   const schema = makeExecutableSchema({
@@ -54,6 +57,51 @@ async function startServer() {
 
   redisClient.on("connect", function () {
     console.log("connected to Redis");
+  });
+
+  io.on("connection", (socket) => {
+    socketManager(socket, io);
+  });
+
+  await server.start();
+
+  const corsOptions = {
+    origin: ["*", "http://localhost:3000", "http://localhost:3001"],
+    credentials: true,
+  };
+
+  app.use(cors(corsOptions));
+
+  app.use(
+    "/graphql",
+    bodyParser.json({ limit: "50mb" }),
+    expressMiddleware(server, {
+      context: async ({ req, res }) => {
+        const token = req.headers ? req.headers.authorization : null;
+        return {
+          req,
+          res,
+          token,
+          redisClient,
+          io,
+        };
+      },
+    })
+  );
+  console.log(
+    process.env.MONGO_URL,
+    "process.env.MONGO_URprocess.env.MONGO_UR"
+  );
+  httpServer.listen(4444, async () => {
+    await mongoose
+      .connect(process.env.MONGO_URL)
+      .then(() => {
+        console.log(`YOUR API IS RUNNING AT PORT :${process.env.PORT}`);
+        console.log(
+          `Subscriptions ready at ws://localhost:${process.env.PORT}/graphql`
+        );
+      })
+      .catch((err) => console.log(err.message));
   });
 }
 startServer();
