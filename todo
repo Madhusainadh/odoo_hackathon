@@ -1,0 +1,19 @@
+0; Signup page : -- Name , Address , number , mail , Role default : Residents
+
+1: Login page   :  - Number , Otp 
+
+2 :   page to add garbage collectors : page will show only to Admin
+
+3: Add Litter hotspots page :  -- Exact address , lat,long , photos , disc 
+
+4: map view of all Litter locations 
+
+5: Task assign page for only admin  : -- all  Litter hotspots shown in table and admin can open those and assign to collectors .
+
+5.5 :  Page to show hotspots to Residents for viewing there status after adding hotspots
+  
+6 : Tracking of cleanup Tasks in realtime : -- garbage collectors can see there assigned hotspots can able to update there status.  status: - Visited , Sheduled to clean  , cleaning ,completed.
+
+
+7:  Notifi  
+
