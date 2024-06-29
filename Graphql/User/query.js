@@ -1,21 +1,12 @@
-
 const Users = require("./schema.js");
 
-
-
 const UserQuery = {
-    user: async (_, { ID }) => {
-        return await Users.findById(ID)
-          .then((res) => {
-            return res;
-          })
-          .catch((err) => {
-            console.log(err.message);
-            return err.message;
-          });
-      },
-
-
-}
+  getUser: async (_, { uniqueId }) => {
+    return await Users.findOne({ Unique_Id: uniqueId });
+  },
+  listUsers: async () => {
+    return await Users.find({});
+  },
+};
 
 module.exports = UserQuery;
